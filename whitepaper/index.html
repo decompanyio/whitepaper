@@ -1,12 +1,11 @@
 <script>
   (function() {
     const path = window.location.pathname;
-    const lambdaApiBase = 'https://redirect.polarishare.io'; // 람다 API 주소
+    const lambdaApiBase = 'https://redirect.polarishare.io';
 
     fetch(lambdaApiBase + path)
       .then(res => {
         if (res.status === 301 || res.status === 302) {
-          // 리다이렉트 응답이면 Location 헤더로 이동
           const location = res.headers.get('Location');
           if (location) {
             window.location.href = location;
